@@ -8,9 +8,9 @@
 
 # 구현사이트
 
-### 인스타그램
+<img width="600" alt="main" src="https://github.com/KIT-Frontend-Team2/week11-pair2-ToyProject/assets/96242198/0902f2fa-cf8f-415d-92bb-2008927b276a">
 
-1. 구현기능 별로 파트 분담
+1. 구현기능 별로 파트 분담 => 컴포넌트 별로 만들기
 
 - 캐러셀
 - 게시판 추가,삭제,수정
@@ -19,14 +19,17 @@
 ### 캐러셀
 
 → 지현
+=> branch -> feat/carousel
 
 ### 게시판 추가,삭제,수정
 
 → 유경
+=> branch -> feat/crud
 
-### 무한스크롤
+### 무한스크롤,페이지네이션
 
 → 동민
+=> branch -> feat/pagination
 
 ## 5.23일 2조 해올 것.
 
