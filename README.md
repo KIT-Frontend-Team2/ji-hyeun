@@ -19,14 +19,17 @@
 ### 캐러셀
 
 → 지현
+=> branch -> feat/carousel
 
 ### 게시판 추가,삭제,수정
 
 → 유경
+=> branch -> feat/crud
 
 ### 무한스크롤,페이지네이션
 
 → 동민
+=> branch -> feat/pagination
 
 ## 5.23일 2조 해올 것.
 
