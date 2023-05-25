@@ -6,6 +6,7 @@ const createPostData = () => {
     imgBox.push(faker.image.url());
   }
   return {
+    postId: faker.string.uuid(),
     post_date: faker.date.between({ from: "2015-01-01", to: "2023-05-25" }),
     user_name: faker.person.firstName(),
     post_content: faker.lorem.lines(Math.floor(Math.random() * 10) + 6),
