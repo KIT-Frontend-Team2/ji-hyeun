@@ -1,6 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
 import MainPage from "../pages/main";
 import Layout from "../components/Layout";
+import Pagy from "../pages/components/pagination/pagination";
 // export const router = createBrowserRouter([])
 const router = createBrowserRouter([
   {
@@ -9,6 +10,10 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <MainPage />,
+      },
+      {
+        path: "/pagination",
+        element: <Pagy />,
       },
       // {
       //     path: '/todo/:todoId',
