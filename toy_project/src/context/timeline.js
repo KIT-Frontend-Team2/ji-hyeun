@@ -27,7 +27,7 @@ const postReducer = (state, action) => {
         postId: Math.floor(Math.random() * 100000 + 1),
         post_date: new Date(), // 현재 날짜와 시간을 설정합니다.
         user_name: action.payload.name,
-        post_context: action.payload.content,
+        post_content: action.payload.content,
         img_box: [],
       };
       return [...state, newPost];
