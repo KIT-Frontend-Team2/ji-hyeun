@@ -1,18 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { useForm } from "react-hook-form";
 import { useUserStore } from "../../../../context/user";
 const SignIn = () => {
-  const { USER_INIT, setLogin } = useUserStore();
+  const { onSubmit } = useUserStore();
 
-  const onSubmit = async (data) => {
-    await new Promise((r) => setTimeout(r, 1000));
-    const userList = USER_INIT;
-    const userFound = userList.find(
-      (v) => v.email === data.email && v.password === data.password
-    );
-    setLogin(true);
-  };
   const {
     register,
     handleSubmit,
@@ -50,9 +42,9 @@ const SignIn = () => {
         })}
       />
       {errors.password && <small role="alert">{errors.password.message}</small>}
-      <button type="submit" disabled={isSubmitting}>
+      <Button type="submit" disabled={isSubmitting}>
         로그인
-      </button>
+      </Button>
     </form>
   );
 };
@@ -60,13 +52,9 @@ const SignIn = () => {
 export default SignIn;
 
 const Button = styled.button`
-  width: 100px;
-  height: 45px;
+  width: 80px;
+  height: 35px;
   text-align: center;
   border-radius: 10px;
   cursor: pointer;
-`;
-
-const Form = styled.form`
-  display: flex;
 `;
