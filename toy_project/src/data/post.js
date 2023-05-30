@@ -14,7 +14,7 @@ const createPostData = () => {
   };
 };
 
-const GenerateData = (numUsers = 40) => {
+const  GenerateData = (numUsers = 40) => {
   return Array.from({ length: numUsers }, createPostData);
 };
 export const POST_DATA = GenerateData(48);

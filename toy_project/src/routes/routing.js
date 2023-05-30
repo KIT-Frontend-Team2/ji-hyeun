@@ -2,6 +2,9 @@ import { createBrowserRouter } from "react-router-dom";
 import MainPage from "../pages/main";
 import Layout from "../components/Layout";
 import Pagy from "../pages/components/pagination/pagination";
+import Slider from "../pages/components/carousel/slider";
+
+
 // export const router = createBrowserRouter([])
 const router = createBrowserRouter([
   {
@@ -15,10 +18,10 @@ const router = createBrowserRouter([
         path: "/pagination",
         element: <Pagy />,
       },
-      // {
-      //     path: '/todo/:todoId',
-      //     element: <TodoPage/>
-      // },
+      {
+          path: "/Slider",
+          element: <Slider />,
+      },
     ],
   },
 ]);
