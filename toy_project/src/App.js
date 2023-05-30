@@ -8,14 +8,15 @@ import { ThemeProvider } from "styled-components";
 import theme from "./styles/theme";
 import GlobalStyles from "./styles/global";
 import UserStoreProvider from "./context/user";
+import { TimeLineProvider } from "./context/timeline";
 function App() {
   return (
-    <UserStoreProvider>
+    <TimeLineProvider>
       <ThemeProvider theme={theme}>
         <GlobalStyles />
         <RouterProvider router={router} />
       </ThemeProvider>
-    </UserStoreProvider>
+    </TimeLineProvider>
   );
 }
 
