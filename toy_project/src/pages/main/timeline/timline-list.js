@@ -1,30 +1,84 @@
+import { POST_DATA } from "../../../data/post";
+import OneTimeline from "./one-timeline";
+import { useState } from "react";
+import styled from "styled-components";
+import { flexCenter } from "../../../styles/common";
+import { useTimeline } from "../../../context/timeline";
+const TimelineList = () => {
+  const [TimeLineList, dispatch] = useTimeline();
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 4;
+  const handleClick = (page) => {
+    setCurrentPage(page);
+  };
+  const handleNextClick = (page) => {
+    if (page !== Math.ceil(TimeLineList.length / itemsPerPage)) {
+      setCurrentPage(page + 1);
+    }
+  };
+  const handlePrevClick = (page) => {
+    if (page !== 1) {
+      setCurrentPage(page - 1);
+    }
+  };
+  const handleLastClick = () => {
+    setCurrentPage(Math.ceil(TimeLineList.length / itemsPerPage));
+  };
+  const indexOfLastItem = currentPage * itemsPerPage;
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+  const currentItems = TimeLineList.slice(indexOfFirstItem, indexOfLastItem);
 
-import { POST_DATA } from '../../../data/post';
-import OneTimeline from './one-timeline';
+  const pageNumbers = [];
+  for (let i = 1; i <= Math.ceil(TimeLineList.length / itemsPerPage); i++) {
+    pageNumbers.push(i);
+  }
 
-// 타임라인 폴더를 따로뺼 필요가 있을까?? 
-  // one-timeline이 뿌려지는 컴포넌트
-  // {timeline,setTimeline}
-const TimelineList = ({timeline,setTimeline}) => {
-  console.log(`뿌려주는 컴ㅍ노넌트 확인 `, timeline)
-
- 
-  // const handleDelete = (postId) => {
-  //   const _POST_DATA = timeline.filter((itme) => itme.postId !== postId )
-  //   setTimeline(_POST_DATA)
-  // }
-
-  return(
+  return (
     <div>
       <h1>게시글들을 담는 타임라인페이지입니다.</h1>
-      {/* post_data를 oneTimeline에 담아 뿌려준다. 순회를 통해 각 객체를 전달한다. */}
       <div>
-        {timeline.map((post) => (
-          <OneTimeline post ={post} postId={post.postId} timeline={timeline} setTimeline={setTimeline} /> // 고유한 식별자를 전달하여 구별을 가능케 한다. 
+        {currentItems.map((post) => (
+          <OneTimeline post={post} /> // 고유한 식별자를 전달하여 구별을 가능케 한다.
         ))}
       </div>
+      <Container>
+        <List onClick={() => setCurrentPage(1)}>{"<<"}</List>
+        <List onClick={() => handlePrevClick(currentPage)}>{"<"}</List>
+        {pageNumbers.map((number) => (
+          <List
+            style={{
+              backgroundColor: number === currentPage ? "blue" : null,
+              display:
+                number <= currentPage + 2 && number >= currentPage - 2
+                  ? "block"
+                  : "none",
+            }}
+            key={number}
+            onClick={() => handleClick(number)}
+          >
+            {number}
+          </List>
+        ))}
+        <List onClick={() => handleNextClick(currentPage)}>{">"}</List>
+        <List onClick={() => handleLastClick()}>{">>"}</List>
+      </Container>
     </div>
-  )
-}
+  );
+};
 
-export default TimelineList
+export default TimelineList;
+const Container = styled.div`
+  width: 100%;
+  ${flexCenter}
+  gap:10px
+`;
+
+const List = styled.button`
+  width: 30px;
+  height: 30px;
+  color: white;
+  background-color: black;
+  text-align: center;
+  border-radius: 10px;
+  cursor: pointer;
+`;
