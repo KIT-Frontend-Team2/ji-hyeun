@@ -16,7 +16,7 @@ const postReducer = (state, action) => {
     case "CHANGE":
       // const newContent = e.target.value;
 
-      const newContent = action.payload.e.target.content.value;
+      const newContent = action.payload.e.target.value;
       if (action.payload.isEditMode) {
         let revisePart = state.find((v) => v.postId === action.payload.id);
         revisePart.post_content = newContent;
@@ -27,7 +27,7 @@ const postReducer = (state, action) => {
         postId: Math.floor(Math.random() * 100000 + 1),
         post_date: new Date(), // 현재 날짜와 시간을 설정합니다.
         user_name: action.payload.name,
-        post_content: action.payload.content,
+        post_context: action.payload.content,
         img_box: [],
       };
       return [...state, newPost];
