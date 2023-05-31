@@ -10,11 +10,10 @@ const AddTimeline = () => {
 
   const handleAdd = (e) => {
     e.preventDefault();
-
     dispatch({
       type: "ADD",
       payload: {
-        name: e.target.name.value,
+        name: e.target.nameInput.value,
         content: e.target.content.value,
       },
     });
@@ -27,8 +26,8 @@ const AddTimeline = () => {
           <span>ADD TOTO LIST</span>
         </S.Title>
         <S.Content>
-          <input placeholder="이름을 입력해주세요" name="name" />
-          <textarea placeholder="내용 입력" name="content"></textarea>
+          <input placeholder="이름을 입력해주세요" name="nameInput" />
+          <input placeholder="내용 입력" name="content"></input>
         </S.Content>
         <S.Button>ADD</S.Button>
       </S.Form>

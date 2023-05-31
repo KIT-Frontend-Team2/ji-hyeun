@@ -16,7 +16,7 @@ const postReducer = (state, action) => {
     case "CHANGE":
       // const newContent = e.target.value;
 
-      const newContent = action.payload.e.target.content.value;
+      const newContent = action.payload.e.target.value;
       if (action.payload.isEditMode) {
         let revisePart = state.find((v) => v.postId === action.payload.id);
         revisePart.post_content = newContent;
