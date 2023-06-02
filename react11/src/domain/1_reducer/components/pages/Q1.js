@@ -37,54 +37,28 @@ const ReducerQ1Page = () => {
   //이제 input에 추가할건데? 문제가있다면 재료input이랑 가격input이 따로있음. 일단 추가코드는 하나로한다음에?
   //각각 input에 넣어줘야할듯하다 된다면야..되겠지...
 
-  //일단 비어있는 객체배열을 만들고 useState로..? 그거를 외부객체로 바꾸
-  const [inputs, setInputs] = useState({
-    name:'', price:'',
-  })
+  //일단 비어있는 객체배열을 usestate로 만들고 그걸 전달해줄 함수를 만들어서 배열이랑 그뒤에 inputs이랑 넣어서
+  //추가할수있게 하고싶은데 그렇게되면 참좋겠네 참좋겠네....아련
+  const onSubmit = (e) => {
 
-  const {name, price} = inputs;
-
-  //onchange 버튼을 만들건데....이 버튼을 누르면 재료랑 가격이 추가되는식으로 하고싶음. 
-  const onChange = e => {
-    const {name, value} = e.target;
-      setInputs({
-        ...inputs,
-      [name]:value  //<- 이름을 객체 배열로 넣어서 value값을 주는거같은데 ai말로는 동적속성변경이란거라네
-      })
+      const newIngredients = {
+        id: Math.floor(Math.random()*100000),
+        name: e.target.name.value,
+        price:e.target.price.value,
+      }
+      setIngredients([...ingredients],[newIngredients])
   }
+  
 
-  const nextId = useRef(6); //배열이 여긴5개니까 ref에 6을 넣어줌
-
-
-  const onCreate = () =>{
-    const ingredient = {
-      id:nextId.current,
-      name,
-      price,
-    }
-    setIngredients([...ingredients, ingredient])
-  setInputs({
-    name:'',
-    price:'' 
-  })
-  console.log(nextId.current);
-  nextId.current += 1;
-}
+  //inputs값이바뀔때? 그 값이??어떤변수에 담겨야는데?바뀔때마다 변수에 담기고?추가버튼을눌렀을때 추가되었을때
+  //onchange 버튼을 만들건데....이 버튼을 누르면 재료랑 가격이 추가되는식으로 하고싶음. 
+ 
 
 
 
-  // const [inputs, setInputs] = useState({
-  //   username: '',
-  //   email: '',
-  // })
-  // const {username, email} = inputs;
-  // const onChange = e => {
-  //   const {name, value} = e.target;
-  //   setInputs({
-  //     ...inputs,
-  //     [name]: value
-  //   })
-  // }
+
+
+
 
 
   //삭제
@@ -111,9 +85,10 @@ const ReducerQ1Page = () => {
         </thead>
         <ReducerQ1List ingredients={ingredients} onRemove={onRemove}/>
       </table>
-      <Q1Form onSubmit={"onSubmit"} onChange={onChange} onCreate={onCreate} name={name} price={price}/>
+      <Q1Form onSubmit={onSubmit}/>
       <NavigateButton isFistPage to={"/2_context/q1"} />
     </>
   );
+
 };
 export default ReducerQ1Page;

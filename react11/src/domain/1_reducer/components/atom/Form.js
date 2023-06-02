@@ -1,13 +1,13 @@
-const Q1Form = ({ onSubmit, onChange, onCreate, name, price }) => {
+const Q1Form = ({ onSubmit}) => {
   return (
-    <form onSubmit={onSubmit}>
+    <form onSubmit={onSubmit} >
       <label>
-        <input type="text" name="name" placeholder="재료" onChange={onChange} value={name}/>
+        <input type="text" name="name" placeholder="재료" />
       </label>
       <label>
-        <input type="number" name="price" placeholder="가격" value={price} /> 
+        <input type="number" name="price" placeholder="가격"/> 
       </label>
-      <button type="submit" onClick={onCreate}>추가</button>
+      <button type="submit">추가</button>
     </form>
   );
 };
