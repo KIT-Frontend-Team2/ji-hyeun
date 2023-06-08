@@ -3,7 +3,7 @@
 
 
 const reducer = (state, action) => {
-  // console.log(state, action)
+  // console.log(state,action)
   switch(action.type){
     case 'UPLOAD' : 
     console.log("upload", action.payload)

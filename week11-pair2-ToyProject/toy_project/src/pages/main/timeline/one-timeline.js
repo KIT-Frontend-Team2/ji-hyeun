@@ -7,6 +7,8 @@ import {
   faSquarePlus,
   faHeart,
 } from "@fortawesome/free-solid-svg-icons";
+import { useReducer } from "react";
+import Slider from "../../components/carousel/slider";
 // import { useTimeline } from '../../../context/timeline';
 
 
@@ -19,25 +21,24 @@ const OneTimeline = ({ post }) => {
   
   // const [content, setContent] = useState(post.post_content);
   // const [isEditMode, setEditMode] = useState(false);
-  console.log(OneTimeline);
-  //OneTimeline 있는거 _ref => {
-  // _s();
-  // let {
-  //   post
-  // } = _ref;
-  // const [isEditMode, setEditMode] = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)(false);
-  // const [TimeLineList, dispatch] = (0,_context_timeline__WEB…
+
+  
   
   const handleEditMode = () => {
     setEditMode(!isEditMode);
   };
 
   // textarea의 값을 받아와서 다시 넣어주기
-  const onChangeText = (e, isEditMode, id) => {
+  const onChangeText = (e, isEditMode , id) => {  
     dispatch({
       type: "CHANGE",
-      payload: { e, isEditMode, id },
+      payload: { e, isEditMode , id }, 
     });
+    /**
+     * @TODO
+     * 동민님한테 물어보기 {e,isEditMode}이거 왜 들어있을까요..???이해를못했음. 
+     */
+
     // const newContent = e.target.value;
     // if (isEditMode) {
     //   setContent(newContent);
@@ -54,6 +55,7 @@ const OneTimeline = ({ post }) => {
   return (
     <S.Wrapper>
       <S.Header>
+        <Slider></Slider>
         {/* <S.StateBox >
           <FontAwesomeIcon icon={faCheck} />
         </S.StateBox> // 여기까지가 이미지 캐러셀 */}

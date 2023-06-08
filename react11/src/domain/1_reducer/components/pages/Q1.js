@@ -1,8 +1,9 @@
-import React, { useRef, useState } from "react";
+import React, { useCallback, useReducer, useRef, useState } from "react";
 import NavigateButton from "../../../../components/NavigateButton";
 import Q1Form from "../atom/Form";
 import ReducerQ1List from "../atom/List";
-
+import reducer from "../../../../store/1_reducer";
+import InItProvider, { DELETE,UPLOAD } from "../../../../store/1_reducer";
 const ReducerQ1Page = () => {
   /* 
       문제 1)
@@ -33,22 +34,52 @@ const ReducerQ1Page = () => {
     { id: 5, name: "양파", price: 500 },
   ]);
 
+//reducer을 만들어줬는데 여기로 옮겨와서 써줘야함. 
+//dispatch를 사용해서 useCallback으로 만들어야하는데....
+  
+
+
+  // const onCreate = useCallback(() => {
+  //   dispatch({
+  //     type: 'CREATE_USER',
+  //     user: {
+  //       id: nextId.current,
+  //       username,
+  //       email
+  //     }
+  //   });
+  //   nextId.current += 1;
+  // }, [username, email]);
+
+
+
+
+
+
+
+
+
 
   //이제 input에 추가할건데? 문제가있다면 재료input이랑 가격input이 따로있음. 일단 추가코드는 하나로한다음에?
   //각각 input에 넣어줘야할듯하다 된다면야..되겠지...
 
   //일단 비어있는 객체배열을 usestate로 만들고 그걸 전달해줄 함수를 만들어서 배열이랑 그뒤에 inputs이랑 넣어서
   //추가할수있게 하고싶은데 그렇게되면 참좋겠네 참좋겠네....아련
-  const onSubmit = (e) => {
+  // const onSubmit = (e) => {
+  //   e.preventDefault();
+  //   console.log(e);
 
-      const newIngredients = {
-        id: Math.floor(Math.random()*100000),
-        name: e.target.name.value,
-        price:e.target.price.value,
-      }
-      setIngredients([...ingredients],[newIngredients])
-  }
+  //     const newIngredients = {
+  //       id: Math.floor(Math.random()*100000),
+  //       name: e.target.name.value,
+  //       price: parseInt(e.target.price.value),
+  //     }
+  //     setIngredients([...ingredients,newIngredients]) 
+      //오답노트 작성할것. ([...ingredients],[newIngredients]) -> 아님
+  // }
   
+
+
 
   //inputs값이바뀔때? 그 값이??어떤변수에 담겨야는데?바뀔때마다 변수에 담기고?추가버튼을눌렀을때 추가되었을때
   //onchange 버튼을 만들건데....이 버튼을 누르면 재료랑 가격이 추가되는식으로 하고싶음. 
@@ -62,19 +93,32 @@ const ReducerQ1Page = () => {
 
 
   //삭제
-  const onRemove = (id) => {
-    const newIngredientsList = ingredients.filter((it) => it.id !== id);
-    setIngredients(newIngredientsList);
-  };
+  // const onRemove = (id) => {
+  //   const newIngredientsList = ingredients.filter((it) => it.id !== id);
+  //   setIngredients(newIngredientsList);
+  // };
   // 위에 코드 remove를 제가  id를 지정해줬잖아요? 이거를 List를 사용할수있게 id를 그쪽으로 보내주고싶은데
+
+
 
   // const onRemove = (targetId) => {
   //   const newDiaryList = data.filter((it) => it.id !== targetId);
   //   setData(newDiaryList);
   // }
 
+  
+
+  const onSubmit = () => {
+  
+  }
+
+  const onRemove = () => {
+    
+  }
+
   return (
     <>
+    <InItProvider>
       <h2>문제 1</h2>
       <table>
         <thead>
@@ -87,8 +131,9 @@ const ReducerQ1Page = () => {
       </table>
       <Q1Form onSubmit={onSubmit}/>
       <NavigateButton isFistPage to={"/2_context/q1"} />
+    </InItProvider>
     </>
   );
+  }
 
-};
 export default ReducerQ1Page;

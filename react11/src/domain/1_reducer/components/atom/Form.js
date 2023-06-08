@@ -1,4 +1,4 @@
-const Q1Form = ({ onSubmit}) => {
+const Q1Form = ({onSubmit}) => {
   return (
     <form onSubmit={onSubmit} >
       <label>

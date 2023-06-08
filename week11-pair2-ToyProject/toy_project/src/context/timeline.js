@@ -28,7 +28,7 @@ const postReducer = (state, action) => {
         post_date: new Date(), // 현재 날짜와 시간을 설정합니다.
         user_name: action.payload.name,
         post_content: action.payload.content,
-        img_box: [],
+        img_box: [], //img_box []배열이 근데 왜 빈칸???
       };
       return [...state, newPost];
     default:
