@@ -1,4 +1,42 @@
-const Q1Form = ({onSubmit}) => {
+import { UseMatStore } from "../../../../store/1_reducer";
+
+const Q1Form = () => {
+
+
+
+  const [state,dispatch] = UseMatStore();
+
+  const onSubmit = (e) => {
+      e.preventDefault();
+      console.log(e);
+        
+      const newState = {
+        id: Math.floor(Math.random()*100000),
+        name: e.target.name.value,
+        price:e.target.price.value,
+      } 
+
+      
+      
+      dispatch({
+          type:'ADDED',
+          payload:{...newState}
+  },
+  )}
+ // const onSubmit = (e) => {
+  //   e.preventDefault();
+  //   console.log(e);
+
+  //     const newIngredients = {
+  //       id: Math.floor(Math.random()*100000),
+  //       name: e.target.name.value,
+  //       price: parseInt(e.target.price.value),
+  //     }
+  //     setIngredients([...ingredients,newIngredients]) 
+
+
+
+      
   return (
     <form onSubmit={onSubmit} >
       <label>

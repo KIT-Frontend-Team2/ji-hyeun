@@ -1,9 +1,8 @@
-import React, { useCallback, useReducer, useRef, useState } from "react";
+import React, { useState } from "react";
 import NavigateButton from "../../../../components/NavigateButton";
 import Q1Form from "../atom/Form";
 import ReducerQ1List from "../atom/List";
-import reducer from "../../../../store/1_reducer";
-import InItProvider, { DELETE,UPLOAD } from "../../../../store/1_reducer";
+import MatStoreProvider, { UseMatStore } from "../../../../store/1_reducer";
 const ReducerQ1Page = () => {
   /* 
       문제 1)
@@ -26,13 +25,14 @@ const ReducerQ1Page = () => {
  */
 
 
-  const [ingredients, setIngredients] = useState([
-    { id: 1, name: "피자 도우", price: 1000 },
-    { id: 2, name: "토마토 소스", price: 500 },
-    { id: 3, name: "치즈", price: 1000 },
-    { id: 4, name: "피망", price: 500 },
-    { id: 5, name: "양파", price: 500 },
-  ]);
+  // const [ingredients, setIngredients] = useState([
+  //   { id: 1, name: "피자 도우", price: 1000 },
+  //   { id: 2, name: "토마토 소스", price: 500 },
+  //   { id: 3, name: "치즈", price: 1000 },
+  //   { id: 4, name: "피망", price: 500 },
+  //   { id: 5, name: "양파", price: 500 },
+  // ]);
+
 
 //reducer을 만들어줬는데 여기로 옮겨와서 써줘야함. 
 //dispatch를 사용해서 useCallback으로 만들어야하는데....
@@ -106,19 +106,11 @@ const ReducerQ1Page = () => {
   //   setData(newDiaryList);
   // }
 
-  
 
-  const onSubmit = () => {
-  
-  }
-
-  const onRemove = () => {
-    
-  }
 
   return (
     <>
-    <InItProvider>
+    <MatStoreProvider>
       <h2>문제 1</h2>
       <table>
         <thead>
@@ -127,11 +119,11 @@ const ReducerQ1Page = () => {
             <th>가격</th>
           </tr>
         </thead>
-        <ReducerQ1List ingredients={ingredients} onRemove={onRemove}/>
+        <ReducerQ1List />
       </table>
-      <Q1Form onSubmit={onSubmit}/>
+      <Q1Form/>
       <NavigateButton isFistPage to={"/2_context/q1"} />
-    </InItProvider>
+    </MatStoreProvider>
     </>
   );
   }
