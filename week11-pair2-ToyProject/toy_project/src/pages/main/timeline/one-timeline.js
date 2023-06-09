@@ -29,10 +29,10 @@ const OneTimeline = ({ post }) => {
   };
 
   // textarea의 값을 받아와서 다시 넣어주기
-  const onChangeText = (e, isEditMode , id) => {  
+  const onChangeText = ( id) => {  
     dispatch({
       type: "CHANGE",
-      payload: { e, isEditMode , id }, 
+      payload: { id }, 
     });
     /**
      * @TODO

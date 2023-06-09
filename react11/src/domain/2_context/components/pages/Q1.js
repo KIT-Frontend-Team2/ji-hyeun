@@ -22,11 +22,24 @@ const ContextQ1Page = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   // 위의 상태를 전역으로 관리하여 ContextQ1Detail, ContextQ1Detail2 두 컴포넌트의 보이기 버튼이 눌려도 모달창이 열릴 수 있도록 해주세요 :)
 
+  
+
+  const openModal = () => {
+      setIsModalOpen(true);
+  }
+
+  const closeModal = () => {
+      setIsModalOpen(false);
+  }
+
+
+
+  //isModalOpen이 true면 isModal발동!!!!근데 isModalOpen이 false잖아 그러면 Modal은 안킨다는거아닌가...
   return (
     <div>
-      {isModalOpen && <ContextQ1Modal />}
+      {isModalOpen && <ContextQ1Modal/>}
       <h2>문제 2 - 1</h2>
-      <ContextQ1Detail />
+      <ContextQ1Detail/>
       <NavigateButton to={"/2_context/q2"} />
     </div>
   );

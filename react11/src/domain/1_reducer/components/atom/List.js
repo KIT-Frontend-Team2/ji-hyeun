@@ -29,7 +29,7 @@ const ReducerQ1List = () => {
           <td>{state.name}</td>
           <td>{state.price}</td>
           <td>
-            <button onClick={() => onRemove(state.id)}>삭제</button> 
+            <button onClick={() =>onRemove(state.id)}>삭제</button> 
           </td>
         </tr>
       ))
